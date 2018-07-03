@@ -7,24 +7,6 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
-
-public struct Scene: Decodable {
-    
-    let title: String?
-    let rows: [Rows]
-
-}
-
-public struct Rows: Decodable {
-    
-    let title: String?
-    let description: String?
-    //let imageHref: UIImage?
-    //let room: [RoomList]
-}
-
 
 class ViewController: UIViewController {
 
@@ -37,11 +19,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
-
 
 }
 
