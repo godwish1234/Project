@@ -38,34 +38,7 @@ public struct Rows: Decodable {
     let imageHref: String?
 }
 
-extension UIImageView {
-    func loadImageUsingCache(withUrl urlString : String) {
-        let url = URL(string: urlString)
-        self.image = nil
-        
-        // check cached image
-        if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
-            self.image = cachedImage
-            return
-        }
-        
-        // if not, download image from url
-        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data!) {
-                    imageCache.setObject(image, forKey: urlString as NSString)
-                    self.image = image
-                }
-            }
-            
-        }).resume()
-    }
-}
+private let refreshControl = UIRefreshControl()
 
 class CollectionViewController: ViewController, UICollectionViewDataSource {
 
@@ -75,7 +48,17 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         
         Initialise()
+        
+        
+        refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
+        collectionView.refreshControl = refreshControl
 
+    }
+    
+    @objc func refresh() {
+        
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,17 +117,22 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
         let location = sender.location(in: self.collectionView)
         let indexPath = self.collectionView?.indexPathForItem(at: location)
         
-        MyVariables.chosenImage = Images[(indexPath?.row)!]
-        MyVariables.chosenTitles = Titles[(indexPath?.row)!]
-        MyVariables.chosenDescriptions = Descriptions[(indexPath?.row)!]
-
+        if(Images[(indexPath?.row)!] == ""){
+            MyVariables.chosenImage = ""
+            MyVariables.chosenTitles = Titles[(indexPath?.row)!]
+            MyVariables.chosenDescriptions = Descriptions[(indexPath?.row)!]
+        }
+        else{
+            MyVariables.chosenImage = Images[(indexPath?.row)!]
+            MyVariables.chosenTitles = Titles[(indexPath?.row)!]
+            MyVariables.chosenDescriptions = Descriptions[(indexPath?.row)!]
+        }
+        
         performSegue(withIdentifier: "showDetails", sender: self)
         
     }
     
     func Initialise(){
-        
-        var NamesArray = [String]() 
         
         let jsonURLString = "https://api.myjson.com/bins/terr0"
         guard let url = URL(string: jsonURLString) else {return}
