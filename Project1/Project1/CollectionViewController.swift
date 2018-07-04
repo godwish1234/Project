@@ -77,8 +77,6 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
             cell.Image.image = img as! UIImage
         }
         
-        // if not, download image from url
-        
         if(Images[indexPath.row] != ""){
             let url = URL(string: Images[indexPath.row])
             
@@ -106,8 +104,6 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
         }
         
         cell.Title.text = Titles[indexPath.row]
-        //cell.Description.text = Descriptions[indexPath.row]
-        
         cell.Image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(itemClicked(_:))))
     
         return cell
@@ -140,20 +136,16 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             guard let data = data else {return}
             
-            
             do{
                 let datas = try JSONDecoder().decode(JSONData.self, from: data)
                 
                 for rows in datas.rows {
-                    
-                    
                     if(rows.title == nil ){
                         Titles.append("blank")
                     }
                     else{
                         
                         Titles.append(rows.title!)
-                        
                     }
                     
                     if(rows.description == nil ){
@@ -169,24 +161,15 @@ class CollectionViewController: ViewController, UICollectionViewDataSource {
                     else{
                         Images.append(rows.imageHref!)
                     }
- 
                 }
-                
                 DispatchQueue.main.async {
                     self.collectionView?.reloadData()
                 }
-                
             }
             catch{
                 print("Error reading" + error.localizedDescription)
                 
             }
-            
             }.resume()
-        
-        
     }
-    
-    
-
 }

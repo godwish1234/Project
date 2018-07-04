@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BD-hT-0fb">
-                                <rect key="frame" x="170" y="151" width="34" height="30"/>
+                                <rect key="frame" x="143" y="150" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
@@ -99,20 +99,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxe-fv-Jz3">
-                                <rect key="frame" x="0.0" y="79" width="375" height="213"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fxe-fv-Jz3">
+                                <rect key="frame" x="16" y="93" width="343" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="b69-0M-b1F"/>
+                                </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="46h-xq-YzF">
-                                <rect key="frame" x="41" y="314" width="292" height="169"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHG-jZ-shE">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHG-jZ-shE">
                                 <rect key="frame" x="0.0" y="35" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" leftItemsSupplementBackButton="YES" id="j4s-9y-dxK">
                                         <barButtonItem key="backBarButtonItem" title="back" id="ZI9-QO-VYh"/>
@@ -129,8 +123,28 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="46h-xq-YzF">
+                                <rect key="frame" x="8" y="311" width="359" height="221"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fxe-fv-Jz3" firstAttribute="top" secondItem="eHG-jZ-shE" secondAttribute="bottom" constant="14" id="1yD-QH-Usw"/>
+                            <constraint firstItem="Ewv-Lc-JSm" firstAttribute="trailing" secondItem="46h-xq-YzF" secondAttribute="trailing" constant="8" id="7ef-me-b2a"/>
+                            <constraint firstItem="eHG-jZ-shE" firstAttribute="leading" secondItem="Ewv-Lc-JSm" secondAttribute="leading" id="Eog-5F-1qk"/>
+                            <constraint firstItem="fxe-fv-Jz3" firstAttribute="leading" secondItem="Ewv-Lc-JSm" secondAttribute="leading" constant="16" id="LWM-GD-7CT"/>
+                            <constraint firstItem="46h-xq-YzF" firstAttribute="leading" secondItem="Ewv-Lc-JSm" secondAttribute="leading" constant="8" id="PBD-iR-ci1"/>
+                            <constraint firstItem="46h-xq-YzF" firstAttribute="centerX" secondItem="3vw-G8-4nN" secondAttribute="centerX" id="UDH-te-XX2"/>
+                            <constraint firstItem="eHG-jZ-shE" firstAttribute="top" secondItem="Ewv-Lc-JSm" secondAttribute="top" constant="15" id="W89-LB-xiC"/>
+                            <constraint firstItem="fxe-fv-Jz3" firstAttribute="centerX" secondItem="3vw-G8-4nN" secondAttribute="centerX" id="Z31-y1-VJB"/>
+                            <constraint firstItem="Ewv-Lc-JSm" firstAttribute="bottom" secondItem="46h-xq-YzF" secondAttribute="bottom" constant="135" id="azn-ZF-kkd"/>
+                            <constraint firstItem="46h-xq-YzF" firstAttribute="top" secondItem="fxe-fv-Jz3" secondAttribute="bottom" constant="18" id="lPw-0r-0BW"/>
+                            <constraint firstItem="Ewv-Lc-JSm" firstAttribute="trailing" secondItem="fxe-fv-Jz3" secondAttribute="trailing" constant="16" id="poh-nw-kxL"/>
+                            <constraint firstItem="eHG-jZ-shE" firstAttribute="trailing" secondItem="Ewv-Lc-JSm" secondAttribute="trailing" id="qHA-iG-NxW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ewv-Lc-JSm"/>
                     </view>
                     <connections>
@@ -140,7 +154,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2224.8000000000002" y="129.98500749625188"/>
+            <point key="canvasLocation" x="2223.1999999999998" y="129.08545727136433"/>
         </scene>
     </scenes>
 </document>
