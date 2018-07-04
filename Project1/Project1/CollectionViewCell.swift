@@ -11,7 +11,6 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var Title: UITextField!
-    @IBOutlet weak var Description: UITextView!
     @IBOutlet weak var Image: UIImageView!
     
 }
